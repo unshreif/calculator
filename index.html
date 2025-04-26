@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>CALCULATOR</h1>
+    <div id="calcarea">0</div>
+    <div class="buttons">
+        <button id="clear" onclick="clearDisplay()">C</button>
+        <button id="backspace" onclick="backspace()">⌫</button>
+        <button id="percent" onclick="operation('%')">%</button>
+        <button id="divide" onclick="operation('/')">÷</button>
+        
+        <button id="seven" onclick="appendNumber(7)">7</button>
+        <button id="eight" onclick="appendNumber(8)">8</button>
+        <button id="nine" onclick="appendNumber(9)">9</button>
+        <button id="multiply" onclick="operation('*')">×</button>
+        
+        <button id="four" onclick="appendNumber(4)">4</button>
+        <button id="five" onclick="appendNumber(5)">5</button>
+        <button id="six" onclick="appendNumber(6)">6</button>
+        <button id="subtract" onclick="operation('-')">−</button>
+        
+        <button id="one" onclick="appendNumber(1)">1</button>
+        <button id="two" onclick="appendNumber(2)">2</button>
+        <button id="three" onclick="appendNumber(3)">3</button>
+        <button id="add" onclick="operation('+')">+</button>
+        
+        <button id="zero" onclick="appendNumber(0)" class="double-width">0</button>
+        <button id="decimal" onclick="appendDecimal()">.</button>
+        <button id="equal" onclick="calculate()">=</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>

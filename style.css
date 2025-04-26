@@ -1,0 +1,102 @@
+body {
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: #202124;
+    color: #e8eaed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-weight: 300;
+    margin-bottom: 30px;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 350px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 20px 0;
+    font-size: 22px;
+    border-radius: 50%;
+    border: none;
+    background-color: #3c4043;
+    color: #e8eaed;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 75px;
+    height: 75px;
+}
+
+button:hover {
+    background-color: #535456;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#calcarea {
+    width: 350px;
+    height: 110px;
+    background-color: #202124;
+    color: #e8eaed;
+    font-size: 48px;
+    border-radius: 15px;
+    margin: 0 auto 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 25px;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#clear, #backspace, #percent {
+    background-color: #5f6368;
+}
+
+#divide, #multiply, #subtract, #add, #equal {
+    background-color: #8ab4f8;
+    color: #202124;
+}
+
+.double-width {
+    grid-column: span 2;
+    width: 162px;
+    border-radius: 40px;
+}
+
+@media (max-width: 400px) {
+    .buttons {
+        width: 320px;
+    }
+    
+    button {
+        width: 65px;
+        height: 65px;
+    }
+    
+    .double-width {
+        width: 142px;
+    }
+    
+    #calcarea {
+        width: 320px;
+    }
+}
