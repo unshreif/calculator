@@ -9,6 +9,14 @@
 </head>
 <body>
     <h1>CALCULATOR</h1>
+    <div class="theme-toggle">
+        <label class="switch">
+            <input type="checkbox" id="theme-switch">
+            <span class="slider round"></span>
+            <span class="theme-icon light">L</span>
+            <span class="theme-icon dark">D</span>
+        </label>
+    </div>
     <button id="installBtn" style="display:none;">Install App</button>
     <div id="calcarea">0</div>
     <div class="buttons">
@@ -36,6 +44,20 @@
         <button id="decimal" onclick="appendDecimal()">.</button>
         <button id="equal" onclick="calculate()">=</button>
     </div>
+
+    <div id="history-panel" class="history-panel">
+        <div class="history-header">
+            <h3>History</h3>
+            <button id="clear-history">Clear</button>
+        </div>
+        <div id="history-list" class="history-list">
+            <!-- History items will be added here dynamically -->
+        </div>
+        <button id="toggle-history" class="toggle-history">
+            <span>History</span>
+        </button>
+    </div>
+
     <script src="index.js"></script>
     <script>
   if ('serviceWorker' in navigator) {
