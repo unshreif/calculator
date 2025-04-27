@@ -2,7 +2,6 @@
 
 A modern, elegant calculator web application that works offline and can be installed on your devices.
 
-![Calculator Screenshot](screenshots/calc-screenshot.png)
 
 ## Features
 
@@ -19,7 +18,7 @@ You can use this calculator in two ways:
 
 ### Method 1: Use Online
 
-Simply visit the hosted version of the calculator at [your-website.com/calculator](https://your-website.com/calculator).
+Simply visit the hosted version of the calculator at [vercel]([https://your-website.com/calculator](https://calculator-phi-weld-52.vercel.app/)).
 
 ### Method 2: Install as PWA
 
