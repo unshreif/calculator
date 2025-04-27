@@ -129,7 +129,6 @@ To learn more about the technologies used in this calculator:
 Here are some ways you could extend this calculator:
 - Add memory functions (M+, M-, MR, MC)
 - Implement scientific calculator functions
-- Add a calculation history feature
 - Create different themes/skins
 
 Happy calculating!
