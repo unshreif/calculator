@@ -3,10 +3,13 @@
 <head>
     <title>Calculator</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#202124">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <h1>CALCULATOR</h1>
+    <button id="installBtn" style="display:none;">Install App</button>
     <div id="calcarea">0</div>
     <div class="buttons">
         <button id="clear" onclick="clearDisplay()">C</button>
@@ -34,5 +37,41 @@
         <button id="equal" onclick="calculate()">=</button>
     </div>
     <script src="index.js"></script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('./service-worker.js').then(
+        function(registration) {
+          console.log('Service Worker registration successful with scope: ', registration.scope);
+        },
+        function(error) {
+          console.log('Service Worker registration failed: ', error);
+        }
+      );
+    });
+  }
+  
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+  
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'block';
+  });
+  
+  installBtn.addEventListener('click', (e) => {
+    installBtn.style.display = 'none';
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  });
+</script>
 </body>
 </html>
