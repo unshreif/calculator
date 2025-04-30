@@ -45,6 +45,11 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Added better control of HTML structures, improving maintenance and scalability */
+main {
+    padding: 20px;
+}
+
 h1 {
     font-weight: 300;
     margin-bottom: 30px;
@@ -82,9 +87,10 @@ button:active {
     transform: translateY(0);
 }
 
+/* changed width for 100% and height for 90px (styling by apple) */
 #calcarea {
-    width: 70%;
-    height: 110px;
+    width: 100%; 
+    height: 90px;
     background-color: var(--calc-bg);
     color: var(--text-color);
     font-size: 48px;
@@ -163,11 +169,18 @@ button:active {
     right: 20px;
 }
 
+/* add cursor pointer */
 .switch {
     position: relative;
     display: inline-block;
     width: 80px; 
     height: 44px; 
+    cursor: pointer;
+}
+
+/* Hidden switch */
+#theme-switch {
+    visibility: hidden;
 }
 
 .slider:before {
@@ -185,9 +198,10 @@ input:checked + .slider:before {
     transform: translateX(36px); 
 }
 
+/* Removed '/' in theme-icon top, fixing css error. */
 .theme-icon {
     position: absolute;
-    top: 12px; /
+    top: 12px;
     font-size: 20px;
     z-index: 1;
 }
@@ -294,4 +308,18 @@ input:checked + .slider:before {
     transform: rotate(-90deg);
     font-size: 16px;
     letter-spacing: 1px;
+}
+
+/* Fixed animation and movement of history button */
+.toggle-history:hover {
+    transform: translateY(-50%) !important;
+}
+
+.toggle-history:active {
+    transform: translateY(-50%) !important;
+}
+
+/* Text CSS estruture */
+.text-bold {
+    font-weight: bold;
 }
