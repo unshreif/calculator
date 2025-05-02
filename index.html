@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#202124">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1 class="text-bold">CALCULATOR</h1>
+    <div class="theme-toggle">
+        <label class="switch">
+            <input type="checkbox" id="theme-switch">
+            <span class="slider round"></span>
+            <span class="theme-icon light">L</span>
+            <span class="theme-icon dark">D</span>
+        </label>
+    </div>
+    <main>
+      <button id="installBtn" style="display:none;">Install App</button>
+      <div id="calcarea">0</div>
+      <div class="buttons">
+          <button id="clear" onclick="clearDisplay()">C</button>
+          <button id="backspace" onclick="backspace()">⌫</button>
+          <button id="percent" onclick="operation('%')">%</button>
+          <button id="divide" onclick="operation('/')">÷</button>
+          
+          <button id="seven" onclick="appendNumber(7)">7</button>
+          <button id="eight" onclick="appendNumber(8)">8</button>
+          <button id="nine" onclick="appendNumber(9)">9</button>
+          <button id="multiply" onclick="operation('*')">×</button>
+          
+          <button id="four" onclick="appendNumber(4)">4</button>
+          <button id="five" onclick="appendNumber(5)">5</button>
+          <button id="six" onclick="appendNumber(6)">6</button>
+          <button id="subtract" onclick="operation('-')">−</button>
+          
+          <button id="one" onclick="appendNumber(1)">1</button>
+          <button id="two" onclick="appendNumber(2)">2</button>
+          <button id="three" onclick="appendNumber(3)">3</button>
+          <button id="add" onclick="operation('+')">+</button>
+          
+          <button id="zero" onclick="appendNumber(0)" class="double-width">0</button>
+          <button id="decimal" onclick="appendDecimal()">.</button>
+          <button id="equal" onclick="calculate()">=</button>
+      </div>
+    </main>
+    
+
+    <div id="history-panel" class="history-panel">
+        <div class="history-header">
+            <h3>History</h3>
+            <button id="clear-history">Clear</button>
+        </div>
+        <div id="history-list" class="history-list">
+            <!-- History items will be added here dynamically -->
+        </div>
+        <button id="toggle-history" class="toggle-history">
+            <span>History</span>
+        </button>
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('./service-worker.js').then(
+        function(registration) {
+          console.log('Service Worker registration successful with scope: ', registration.scope);
+        },
+        function(error) {
+          console.log('Service Worker registration failed: ', error);
+        }
+      );
+    });
+  }
+  
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+  
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'block';
+  });
+  
+  installBtn.addEventListener('click', (e) => {
+    installBtn.style.display = 'none';
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+    });
+  });
+</script>
+</body>
+</html>
