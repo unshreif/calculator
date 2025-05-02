@@ -97,6 +97,46 @@
       deferredPrompt = null;
     });
   });
+
+document.addEventListener('keydown', (e) => {
+  const key = e.key;
+  const display = document.getElementById("calcarea");
+  const currentValue = display.textContent;
+
+  // Prevent default actions for specific keys
+  if (['Enter', '=', 'Backspace', '%'].includes(key)) {
+    e.preventDefault();
+  }
+
+  // Number input (0-9 and numpad)
+  if ((key >= '0' && key <= '9') || (key >= '0' && key <= '9')) {
+    appendNumber(parseInt(key));
+  }
+  if (key === '.' || key === ',') {
+    appendDecimal();
+  }
+
+  // Operators with keyboard mapping
+  if (['+', '-', '*', '/', '%'].includes(key)) {
+    if (key === '-' && currentValue === '0') {
+      display.textContent = '-';
+    } else {
+      operation(key);
+    }
+  }
+  if (key === 'Enter' || key === '=') {
+    calculate();
+  }
+  if (key === 'Escape') {
+    clearDisplay();
+  }
+  if (key === 'Backspace') {
+    backspace();
+  }
+  if (key === '%' && currentValue !== '0') {
+    operation('%');
+  }
+});
 </script>
 </body>
 </html>
