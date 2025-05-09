@@ -220,3 +220,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+// Convert pressed key into button ID
+function keyToId(num) {
+    const words = {
+        0: 'zero',
+        1: 'one',
+        2: 'two',
+        3: 'three',
+        4: 'four',
+        5: 'five',
+        6: 'six',
+        7: 'seven',
+        8: 'eight',
+        9: 'nine',
+        '.': 'decimal',
+        'Escape': 'clear',
+        'Backspace': 'backspace',
+        '*': 'multiply',
+        '/': 'divide',
+        '+': 'add',
+        '-': 'subtract',
+        'Enter': 'equal',
+        '=': 'equal',
+    };
+    
+    return words[num];
+}
+
+// Keyboard animation
+document.addEventListener('keydown', (event) => {
+    var key = event.key;
+    key = keyToId(key);
+    const button = document.getElementById(key);
+    button.classList.add('active-btn'); //add active class
+
+    // Remove the class after a short delay
+    setTimeout(() => {
+        button.classList.remove('active-btn');
+    }, 200);
+
+});

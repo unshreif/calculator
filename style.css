@@ -78,6 +78,27 @@ button {
     height: 75px;
 }
 
+/* for animating on keypress event */
+@keyframes manual_animation {
+    0% {
+        transform: translateY(0);
+        background-color: var(--btn-bg);
+    }
+    50% {
+        transform: translateY(-2px);
+        background-color: var(--btn-hover);
+    }
+    100% {
+        transform: translateY(0);
+        background-color: var(--btn-bg);
+    }
+    
+}
+
+.active-btn{
+    animation: manual_animation 0.2s ease;
+}
+
 button:hover {
     background-color: var(--btn-hover);
     transform: translateY(-2px);
