@@ -36,7 +36,7 @@ function appendDecimal() {
 function operation(op) {
     const display = document.getElementById("calcarea");
     const inputValue = parseFloat(display.textContent);
-    
+
     if (firstOperand === null) {
         firstOperand = inputValue;
     } else if (operator) {
@@ -50,7 +50,7 @@ function operation(op) {
 }
 
 function calculate(silent = false) {
-    if (operator === null || firstOperand === null) {
+    if (operator === null || firstOperand === null || waitingForSecondOperand) {
         return parseFloat(document.getElementById("calcarea").textContent);
     }
     
